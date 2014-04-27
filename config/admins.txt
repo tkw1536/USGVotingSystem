@@ -1,0 +1,4 @@
+# List admins here, one per line
+# lines starting with #s will be ignored
+# 
+# Admins can reset the vote and view results

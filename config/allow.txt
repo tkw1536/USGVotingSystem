@@ -1,0 +1,2 @@
+# Additonal people who are allowed to vote. 
+# one per line, lines starting with #s are ignored. 

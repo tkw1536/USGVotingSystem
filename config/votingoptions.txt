@@ -1,0 +1,4 @@
+# Place voting options in this file. 
+# Lines with #s are ignored
+Yes
+No
