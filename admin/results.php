@@ -25,7 +25,7 @@
 
   include dirname(__FILE__) . "/../inc/head.php";
 ?>
-      <form class="form-signin" role="form" action="/03/"  method="POST">
+      <form>
         <h2 class="form-signin-heading">Voters so far: </h2>
         <ul><?php
           //print the people that have voted
@@ -44,4 +44,5 @@
           }
         ?></ul>
         <?php echo "Total: ". ((string)$total_votes);  ?>
+    </form>
 <?php include dirname(__FILE__) . "/../inc/foot.php"; ?>

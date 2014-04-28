@@ -30,7 +30,7 @@
 
   include dirname(__FILE__) . "/../inc/head.php"; 
 ?>
-      <form class="form-signin" role="form" action="/03/"  method="POST">
+      <form class="form-signin" role="form" action="../03/"  method="POST">
         <h2 class="form-signin-heading">Placing your vote</h2>
         <input type="hidden" name="user" value="<?php echo $user; ?>">
         <input type="hidden" name="pass" value="<?php echo htmlentities($pass); ?>">

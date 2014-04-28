@@ -16,7 +16,7 @@
 
      include dirname(__FILE__) . "/../inc/head.php";
 ?>
-      <form class="form-signin" role="form" action="/admin/results.php" method="POST">
+      <form class="form-signin" role="form" action="./results.php" method="POST">
         <h2 class="form-signin-heading">USG Voting Platform</h2>
         <?php 
           //print an error message if we have an error
