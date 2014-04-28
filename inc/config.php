@@ -24,33 +24,6 @@
 		return in_array($line, read_cfgFile($file)); 
 	}
 
-	function make_directory($dir){
-		if(!is_dir($dir)){
-			mkdir($dir, 0777, true);
-		}
-	}
-
-	function list_files($dir){
-		//list files in a directory, create it if it doesnt exist
-		make_directory($dir); 
-
-		$files = array(); 
-		foreach(scandir($dir) as $file)
-		{
-		    if(is_file($dir.$file)){
-				array_push($files, $file); 
-			}
-		}
-
-		return $files; 
-	}
-
-	function touchdir($dir){
-		foreach(list_files($dir) as $file){
-			touch($dir . $file); 
-		}
-	}
-
 	function redirect_to($to, $code = "HTTP/1.1 303 See Other"){
 		//redirects to a relative url
 		$uri = rel2abs($to, "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"); 

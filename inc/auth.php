@@ -22,7 +22,7 @@
 
 		$dn = "OU=Users,OU=CampusNet,DC=jacobs,DC=jacobs-university,DC=de";
 		$filter="(sAMAccountName=". $user .")";
-		$justthese = array("displayName", "mail");
+		$justthese = array("displayName", "mail", "description");
 
 		$sr=ldap_search($ds, $dn, $filter, $justthese); //, justthese
 		$info =ldap_get_entries($ds, $sr);
@@ -33,9 +33,17 @@
 		$name = explode(", ", $name); 
 		$name = $name[1] . " " . $name[0]; 
 
+		$is_ug = split(" ", $info[0]["description"][0]) or array();
+
+		if(count($is_ug) > 0){
+			$is_ug = ($is_ug[0] == "ug"); 
+		} else {
+			$is_ug = False; 
+		}
+
 		ldap_unbind($ds); 
 
-		$arr = array("fullname" => $name, "mail" => $mail, "username" => $user);
+		$arr = array("fullname" => $name, "mail" => $mail, "username" => $user, "is_ug" => $is_ug);
 		return $arr; 
 	}
 

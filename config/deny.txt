@@ -1,3 +1,3 @@
-# Additonal people who are allowed to vote. 
+# Additonal people who are forbidden to vote
 # in case a person is in both deny.txt and allow.txt, the vote is allowed. 
 # one per line, lines starting with #s are ignored. 

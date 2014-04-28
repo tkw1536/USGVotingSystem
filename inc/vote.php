@@ -12,7 +12,9 @@
 
 		$user = $user_info["username"]; 
 
-		//TODO: implement allow_vote logic here
+		if($user_info["is_ug"] and (!cfg_contains("deny.txt", $user))){
+			return True; 
+		}
 
 		//otherwise add the override here
 		return cfg_contains("allow.txt", $user); 
@@ -25,6 +27,8 @@
 
 
 	function vote($user, $voteId){
+		//perform a vote
+
 		if(has_voted($user)){
 			return false; 
 		} else {
@@ -76,6 +80,7 @@
 	}
 
 	function get_voting_options(){
+		//get the available options for voting
 		return read_cfgFile("votingoptions.txt");
 	}
 ?>
