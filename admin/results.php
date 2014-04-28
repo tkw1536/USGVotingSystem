@@ -1,17 +1,17 @@
 <?php
-	include dirname(__FILE__) . "/../inc/auth.php"; 
-	include dirname(__FILE__) . "/../inc/vote.php"; 
+  include dirname(__FILE__) . "/../inc/auth.php"; 
+  include dirname(__FILE__) . "/../inc/vote.php"; 
 
-	$user = @$_POST["user"]; 
-	$pass = @$_POST["pass"]; 
+  $user = @$_POST["user"]; 
+  $pass = @$_POST["pass"]; 
 
-	$user_info = getUserData($user, $pass); 
+  $user_info = getUserData($user, $pass); 
 
-	if($user_info == False){
-		header("HTTP/1.1 303 See Other");
-		header( 'Location: /admin/?fail=authfail' );
-		die("Please direct your browser to /admin/?fail=authfail"); 
-	}
+  if($user_info == False){
+    header("HTTP/1.1 303 See Other");
+    header( 'Location: /admin/?fail=authfail' );
+    die("Please direct your browser to /admin/?fail=authfail"); 
+  }
 
   if(!is_admin($user)){
     header("HTTP/1.1 303 See Other");
