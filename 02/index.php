@@ -33,7 +33,7 @@
       <form class="form-signin" role="form" action="/03/"  method="POST">
         <h2 class="form-signin-heading">Placing your vote</h2>
         <input type="hidden" name="user" value="<?php echo $user; ?>">
-        <input type="hidden" name="pass" value="<?php echo $pass; ?>">
+        <input type="hidden" name="pass" value="<?php echo htmlentities($pass); ?>">
         Your name: <?php echo $user_info["fullname"]; ?><br />
         Your vote: <select name="vote">
         <option value='illegalvote'>Please choose an option below. </option>
