@@ -20,7 +20,7 @@
         <h2 class="form-signin-heading">USG Voting Platform</h2>
         <?php 
           //print an error message if we have an error
-          if(!empty(@$_GET["fail"])){ 
+          if(!empty($_GET["fail"])){ 
         ?>
           <div class="alert alert-danger"><strong><?php echo getErrorMessage($_GET["fail"]); ?></strong></div>
         <?php
