@@ -8,15 +8,11 @@
 	$user_info = getUserData($user, $pass); 
 
 	if($user_info == False){
-		header("HTTP/1.1 303 See Other");
-		header( 'Location: /admin/?fail=authfail' );
-		die("Please direct your browser to /admin/?fail=authfail"); 
+		redirect_to("../admin/?fail=authfail"); 
 	}
 
   if(!is_admin($user)){
-    header("HTTP/1.1 303 See Other");
-    header( 'Location: /admin/?fail=noadmin' );
-    die("Please direct your browser to /admin/?fail=noadmin"); 
+    redirect_to("../admin/01/?fail=noadmin");
   }
 
   $voters = get_voted_users(); 
