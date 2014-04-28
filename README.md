@@ -9,7 +9,9 @@ A really simple voting system for the usg. First initial system written in ~3 ho
 ## Setup and Config
 
 1) Put this on your php capable server in any directory
+
 2) Make sure the server has read and write permissions on this directory
+
 3) Check the config files in the config directory
 
 ## TODO
@@ -20,7 +22,8 @@ A really simple voting system for the usg. First initial system written in ~3 ho
 
 ## License
 
-Licensed under MIT License
+Licensed under MIT License. 
+
 ```
 Copyright (c) 2014 Tom Wiesing
 

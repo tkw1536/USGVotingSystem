@@ -1,13 +1,19 @@
 <?php
+	//Configuration
+
 	function read_cfgFile($file){
 		//read a cfg file and ignore lines with #s at the start
 
+		//resolve path to the file
 		$path = dirname(__FILE__) . "/../config/" . $file; 
 
 		$lines = array();
 
 		if(is_file($path)){
+			//only iterate if we are a file
+
 			foreach(file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line){
+				//iterate over all the lines if they are nonempty and not start with a #
 			   if(substr($line, 0, 1) === '#'){} else {
 			   		if(!empty($line)){
 			   			array_push($lines, $line);
@@ -26,15 +32,22 @@
 
 	function redirect_to($to, $code = "HTTP/1.1 303 See Other"){
 		//redirects to a relative url
+
+		//resolve the url
 		$uri = rel2abs($to, "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"); 
+		
+		//set additional header code
 		if($code){
 			header($code);
 		}
+
+		//do the rewrite and die()
 		header("Location: $uri");
 		die("Please redirect your browser to $uri"); 
 	}
 
 	//from http://stackoverflow.com/questions/1243418/php-how-to-resolve-a-relative-url
+	//resolves a relative url relative to a base. 
 	function rel2abs($rel, $base)
     {
         /* return if already absolute URL */
