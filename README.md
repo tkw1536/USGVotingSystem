@@ -14,12 +14,6 @@ A really simple voting system for the usg. First initial system written in ~3 ho
 
 3) Check the config files in the config directory
 
-## TODO
-
-* Make a fancy admin interface
-* make some better css for the voting interface
-* more documentation?
-
 ## License
 
 Licensed under MIT License. 
