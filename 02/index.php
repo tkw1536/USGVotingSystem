@@ -21,6 +21,11 @@
     redirect_to("../01/?fail=cantvote"); 
   }
 
+  if(vote_locked()){
+    //is the vote locked
+    redirect_to("../01/?fail=votelock"); 
+  }
+
 	if(has_voted($user)){
     //did the user vote already?
 		redirect_to("../01/?fail=hasvoted"); 

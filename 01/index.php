@@ -21,6 +21,10 @@
         return "Failed to save the vote. Please try again. "; 
       }
 
+      if($err == "votelock"){
+        return "Voting is closed. Please come back at another time. "; 
+      }
+
       if($err == "illegalvote"){
         return "Voting doesn't work like that. What are you doing? "; 
       }

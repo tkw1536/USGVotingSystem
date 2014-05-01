@@ -14,6 +14,10 @@ A really simple voting system for the usg. First initial system written in ~3 ho
 
 3) Check the config files in the config directory
 
+## Locking the vote
+
+To lock the vote, create a file lock.txt in the config directory. 
+
 ## License
 
 Licensed under MIT License. 

@@ -15,12 +15,17 @@
 		$user = $user_info["username"]; 
 
 		//we can vote if we are not excluded and an undergrad
-		if($user_info["is_ug"] and (!cfg_contains("deny.txt", $user))){
+		if($user_info["is_ug"] and (!cfg_contains("deny.txt", $user)) and !cfg_contains("deny.txt", "*")){
 			return True; 
 		}
 
 		//otherwise we can only vote if we're specifially allowed
 		return cfg_contains("allow.txt", $user); 
+	}
+
+	function vote_locked(){
+		//check if the vote is locked
+		return file_exists(dirname(__FILE__) .  "/../config/lock.txt");
 	}
 
 	function is_admin($user){

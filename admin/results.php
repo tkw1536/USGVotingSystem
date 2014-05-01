@@ -26,12 +26,6 @@
   include dirname(__FILE__) . "/../inc/head.php";
 ?>
       <form>
-        <h2 class="form-signin-heading">Voters so far: </h2>
-        <ul><?php
-          //print the people that have voted
-          echo "          <li>". join("</li>          <li>", $voters) . "</li>\n";  
-        ?></ul>
-        <?php echo "Total: ". count($voters);  ?>
         <h2 class="form-signin-heading">Results: </h2>
         <ul><?php
           //print the votes for each of the options. 
@@ -44,5 +38,12 @@
           }
         ?></ul>
         <?php echo "Total: ". ((string)$total_votes);  ?>
+
+        <h2 class="form-signin-heading">Voters so far: </h2>
+        <ul><?php
+          //print the people that have voted
+          echo "          <li>". join("</li>          <li>", $voters) . "</li>\n";  
+        ?></ul>
+        <?php echo "Total: ". count($voters);  ?>
     </form>
 <?php include dirname(__FILE__) . "/../inc/foot.php"; ?>

@@ -26,6 +26,11 @@
     redirect_to("../01/?fail=hasvoted"); 
   }
 
+  if(vote_locked()){
+    //is the vote locked
+    redirect_to("../01/?fail=votelock"); 
+  }
+
   //check what the user voted for
   $vote = @$_POST["vote"]; 
 
