@@ -76,4 +76,119 @@
         /* absolute URL is ready! */
         return $scheme.'://'.$abs;
     }
+
+    function ptable($uid, $data, $colors){
+    //prints a nice table
+    //and a diagram using raphael
+
+      $res = ""; 
+
+    $total = 0;
+    $percents = array();
+
+    $labels_js = array(); 
+    $data_js = array();
+    $percents_js = array();  
+    
+    foreach($data as $key => $value){
+      $total += $value; 
+      array_push($labels_js, $key); 
+      array_push($data_js, $value);
+    }
+
+    foreach($data as $key => $value){
+      if($total > 0){
+        $percents[$key] = 100 * ($value / $total);
+      } else {
+        $percents[$key] = 0; 
+      }
+       
+      array_push($percents_js, $percents[$key]);
+    }
+    $res = $res . '
+<div class="row">
+  <div class="col-md-6"><div id="' . $uid . '"></div></div>
+  <div class="clearfix visible-xs"></div>
+  <div class="col-md-6" style="display:table; ">
+    <div style="display: table-cell; vertical-align: middle;">
+      <table class="table table-striped">
+        <tr>
+          <th>
+            
+          </th>
+          <th>
+            Absolute
+          </th>
+          <th>
+            Relative
+          </th>
+        </tr>
+'; 
+        foreach($data as $key => $count){
+$res = $res . '
+        <tr>
+          <td>
+            '.$key.'
+          </td>
+          <td>
+            '.$count.'
+          </td>
+          <td>
+            '.$percents[$key].' %
+          </td>
+        </tr>
+        '; }
+$res = $res . '
+
+      <tr>
+          <td>
+            Total
+          </td>
+          <td>
+            '.$total.'
+          </td>
+          <td>
+            100 %
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $(function(){
+    var uid = '.json_encode($uid).'; 
+    var labels = '.json_encode($labels_js).'; 
+    var counts = '.json_encode($data_js).';
+    var colors = '.json_encode($colors).'; 
+    var percents = '.json_encode($percents_js).'; 
+    var total = '.json_encode($total).'; 
+
+    for(var i=0;i<counts.length;i++){
+      if(counts[i] == 0){
+        counts.splice(i, 1);
+        percents.splice(i, 1);
+        labels.splice(i, 1); 
+        if(colors !== 0){
+          colors.splice(i, 1);
+        }
+        i--; 
+      }
+    }
+
+    for(var i=0;i<labels.length;i++){
+      labels[i] += "\\n("+counts[i]+")"; 
+    }
+
+    var hsize = $("#"+uid).parent().width(); 
+
+    Raphael(uid, hsize, hsize).pieChart(hsize / 2, hsize / 2, hsize / 4, percents, labels, "#fff", colors);
+    $("#"+uid).parent().parent().find("table").parent().parent().height($("#"+uid).height());
+  });
+  </script>
+'; 
+  return $res; 
+  }
 ?>

@@ -35,6 +35,7 @@
 
   include dirname(__FILE__) . "/../inc/head.php"; 
 ?>
+    <div class="container">
       <form class="form-signin" role="form" action="../03/"  method="POST">
         <h2 class="form-signin-heading">Placing your vote</h2>
         <input type="hidden" name="user" value="<?php echo $user; ?>">
@@ -60,4 +61,5 @@
         </label>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Vote</button>
       </form>
+    </div>
 <?php include dirname(__FILE__) . "/../inc/foot.php"; ?>

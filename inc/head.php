@@ -1,6 +1,3 @@
-<?php
-	//Header includes
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>USG Voting Platform</title>
+
+    
+    <script src="../client/jquery/jquery-2.1.1.min.js"></script>
+    <script src="../client/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="../client/raphaeljs/raphael-min.js"></script>
+    <script src="../client/raphaeljs/pie.js"></script>
     
     <!--
       Copyright (c) 2014 Tom Wiesing
@@ -51,4 +55,3 @@
     <![endif]-->
   </head>
   <body>
-    <div class="container">

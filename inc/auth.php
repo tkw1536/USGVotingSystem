@@ -24,7 +24,10 @@
 	}
 
 	function get_userinfo($user, $pass){
-		//get some user info
+		//get some user info (old version)
+
+		//username
+
 
 		//set ldap host
 		$ldap_host = 'jacobs.jacobs-university.de';

@@ -46,6 +46,7 @@
 
  include dirname(__FILE__) . "/../inc/head.php";
 ?>
+    <div class="container">
       <form class="form-signin">
         <h2 class="form-signin-heading">Finished. </h2>
         <div class="alert alert-success">
@@ -53,4 +54,5 @@
         You may now return to your academic work. 
         </div>
       </form>
+    </div>
 <?php include dirname(__FILE__) . "/../inc/foot.php"; ?>

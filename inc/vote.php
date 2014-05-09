@@ -28,6 +28,18 @@
 		return file_exists(dirname(__FILE__) .  "/../config/lock.txt");
 	}
 
+	function lock_vote(){
+		if(!vote_locked()){
+			touch(dirname(__FILE__) .  "/../config/lock.txt");
+		}
+	}
+
+	function unlock_vote(){
+		if(vote_locked()){
+			unlink(dirname(__FILE__) .  "/../config/lock.txt");
+		}
+	}
+
 	function is_admin($user){
 		//check if a person is in the admins
 		return cfg_contains("admins.txt", $user);
@@ -80,6 +92,32 @@
 		return read_cfgFile("/../voting/results/voters.txt"); 
 	}
 
+	function get_not_voted_users(){
+		//everyone who has not yet voted
+		$all = get_eligible_voters(); 
+		$voted = get_voted_users(); 
+		$others = array(); 
+
+		foreach($all as $person){
+			if(!in_array($person, get_voted_users())){
+				array_push($others, $person); 
+			}
+		}
+
+		return $others; 
+	}
+
+	function get_eligible_voters(){
+		//get all the users that can vote.
+		try
+		{
+			return read_cfgFile("/../voting/tmp_voters.txt");
+		} catch (Exception $e)
+		{
+		 return array(); 
+		}
+	}
+
 	function get_results(){
 		//get people hat have voted
 
@@ -101,5 +139,22 @@
 	function get_voting_options(){
 		//get the available options for voting
 		return read_cfgFile("votingoptions.txt");
+	}
+
+	function vote_export($filename){
+		$dest = dirname(__FILE__) . "/../public/" . $filename . ".html"; 
+
+		$head = file_get_contents(dirname(__FILE__) . "/head.php");
+		$foot =  file_get_contents(dirname(__FILE__) . "/foot.php");
+
+		$body = '
+			<div class="container">
+				' . ptable("results", get_results(), 0) . '
+			</div>
+		'; 
+
+		file_put_contents($dest, $head . $body . $foot); 
+
+		return "../public/" . $filename . ".html";
 	}
 ?>

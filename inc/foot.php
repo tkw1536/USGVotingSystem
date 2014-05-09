@@ -1,9 +1,4 @@
-<?php
-	//Footer includes
-?>
-	</div>
-
-	<div class="container" id="footer">
+<div class="container" id="footer">
 		<div class="row">
 			Powered by USGVotingSystem - &copy; Tom Wiesing 2014
 		</div>
