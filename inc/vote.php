@@ -144,12 +144,32 @@
 	function vote_export($filename){
 		$dest = dirname(__FILE__) . "/../public/" . $filename . ".html"; 
 
+		$vote_res = get_results(); 
+
+		$voters = count(get_voted_users()); 
+		$unvoters = count(get_not_voted_users()); 
+
 		$head = file_get_contents(dirname(__FILE__) . "/head.php");
 		$foot =  file_get_contents(dirname(__FILE__) . "/foot.php");
 
+
+
 		$body = '
 			<div class="container">
+			<h1>Final results for vote</h1>
+
+			<div class="row">
+				<div class="col-md-12">
+				'.join("\n", read_cfgFile("info.txt")).'
+				</div>
+			</div>
+
+			<h2>Vote results</h2>
 				' . ptable("results", get_results(), 0) . '
+
+			<h2>Voters</h2>
+			' . ptable("voteprint", array("voted" => $voters, "not voted" => $unvoters), array("green", "red")) . '
+			
 			</div>
 		'; 
 

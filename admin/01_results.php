@@ -105,7 +105,7 @@
         </div>
 
         <h2>Voter status</h2>
-        <?php echo ptable("voteprint", array("have voted" => count($voters), "have not voted" => count($unvoters)), array("green", "red")); ?>
+        <?php echo ptable("voteprint", array("voted" => count($voters), "not voted" => count($unvoters)), array("green", "red")); ?>
 
         <h2>Voters so far: </h2>
         <div class="row">

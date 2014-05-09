@@ -58,6 +58,9 @@
             //print some information about the vote
             echo join("\n", read_cfgFile("info.txt")); 
           ?>
+
+          Administrators can only see <b>if</b> you have voted, not what you have voted. <br />
+          The final result will only show how many people have voted for which options. 
         </label>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Vote</button>
       </form>

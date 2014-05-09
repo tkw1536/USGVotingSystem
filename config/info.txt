@@ -3,6 +3,3 @@
 # Lines starting with #s are ignored. 
 
 Vote on something. <br />
-
-Administrators can only see <b>if</b> you have voted, not what you have voted. <br />
-The final result will only show how many people have voted for which options. 
