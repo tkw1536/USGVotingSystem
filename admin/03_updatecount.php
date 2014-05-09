@@ -155,7 +155,7 @@
 	?>
 		</div>
 
-		<?php echo ptable("holder", array("eligible" => $el, "ineligible" => $iel), array("#d9534f", "#5cb85c")); ?> 
+		<?php echo ptable("holder", array("eligible" => $el, "ineligible" => $iel), array("#5cb85c", "#d9534f")); ?> 
 
 		<div class="row">
 			<form action="01_results.php" method="POST">
