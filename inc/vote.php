@@ -5,6 +5,9 @@
 
 	function has_voted($user){
 		//check if the user has voted
+
+		$user = strtolower($user); 
+
 		return in_array($user, get_voted_users()); 
 	}
 
@@ -13,6 +16,8 @@
 
 		//get the username
 		$user = $user_info["username"]; 
+
+		$user = strtolower($user); 
 
 		//we can vote if we are not excluded and an undergrad
 		if($user_info["is_ug"] and (!cfg_contains("deny.txt", $user)) and !cfg_contains("deny.txt", "*")){
@@ -42,12 +47,17 @@
 
 	function is_admin($user){
 		//check if a person is in the admins
+
+		$user = strtolower($user); 
+
 		return cfg_contains("admins.txt", $user);
 	}
 
 
 	function vote($user, $voteId){
 		//perform a vote
+
+		$user = strtolower($user); 
 
 		if(has_voted($user)){
 			//did the user already vote?
@@ -88,8 +98,13 @@
 	}
 
 	function get_voted_users(){
-		//get an array of people that have voted
-		return read_cfgFile("/../voting/results/voters.txt"); 
+		//get an array of people that have vote
+		$voters = read_cfgFile("/../voting/results/voters.txt"); 
+		foreach($voters as &$voter){
+			$voter = strtolower($voter); 
+		}
+
+		return $voters; 
 	}
 
 	function get_not_voted_users(){
@@ -99,7 +114,7 @@
 		$others = array(); 
 
 		foreach($all as $person){
-			if(!in_array($person, get_voted_users())){
+			if(!in_array(strtolower($person), $voted)){
 				array_push($others, $person); 
 			}
 		}
